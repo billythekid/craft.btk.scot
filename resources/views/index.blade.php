@@ -48,7 +48,6 @@
               {
                 "Effect": "Allow",
                 "Action": [
-                  "s3:ListBucket",
                   "s3:ListBucketMultipartUploads",
                   "s3:GetBucketLocation"
                 ],
