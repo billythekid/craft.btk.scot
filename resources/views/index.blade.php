@@ -38,35 +38,36 @@
       <div class="col-md-8">
         <p>Copy this code:</p>
         <pre>{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "s3:ListAllMyBuckets",
-      "Resource": "arn:aws:s3:::*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket",
-        "s3:ListBucketMultipartUploads",
-        "s3:GetBucketLocation"
-      ],
-      "Resource": "arn:aws:s3:::@{{ bucket }}"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:AbortMultipartUpload",
-        "s3:DeleteObject",
-        "s3:GetObject",
-        "s3:PutObjectAcl",
-        "s3:PutObject"
-      ],
-      "Resource": "arn:aws:s3:::@{{ bucket }}/*"
-    }
-  ]
-}</pre>
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "s3:ListAllMyBuckets",
+                "Resource": "arn:aws:s3:::*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:ListBucket",
+                  "s3:ListBucketMultipartUploads",
+                  "s3:GetBucketLocation"
+                ],
+                "Resource": "arn:aws:s3:::@{{ bucket }}"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:AbortMultipartUpload",
+                  "s3:DeleteObject",
+                  "s3:GetObjectAcl",
+                  "s3:GetObject",
+                  "s3:PutObjectAcl",
+                  "s3:PutObject"
+                ],
+                "Resource": "arn:aws:s3:::@{{ bucket }}/*"
+              }
+            ]
+          }</pre>
       </div>
     </div>
   </div>
