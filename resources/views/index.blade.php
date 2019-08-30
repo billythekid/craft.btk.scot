@@ -72,6 +72,22 @@
     </div>
   </div>
 
+  <div id="sqlsrv">
+    <h2>SQL Server to MySQL</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="sqlsrv">Paste the SQLSRV dump</label>
+          <textarea class="form-control" id="sqlsrvcode" v-model="sqlsrvcode" rows="20"></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="mysql">Here's the MySQL:</label>
+        <textarea id="mysql" class="form-control" readonly rows="20">@{{ mysqlcode }}</textarea>
+      </div>
+    </div>
+  </div>
+
 @endsection
 
 @push('scripts')
@@ -104,5 +120,23 @@
         bucket: ''
       }
     });
+    var sqlsrv = new Vue({
+      el: "#sqlsrv",
+      data: {
+        sqlsrvcode: ""
+      },
+      computed: {
+        mysqlcode: function () {
+          var workingcode = this.sqlsrvcode.replace(/\[dbo]\./gi, '');
+          workingcode = workingcode.replace(/\[([a-zA-Z_0-9]*)]/gi, '$1');
+          workingcode = workingcode.replace(/nvarchar\(MAX\)/gi, 'longtext');
+          workingcode = workingcode.replace(/nvarchar\(([0-9]*)\)/gi, 'text($1)');
+          workingcode = workingcode.replace(/smalldatetime/gi, 'timestamp');
+          workingcode = workingcode.replace(/nchar/gi, 'text');
+          workingcode = workingcode.replace(/.*--.*\n*/g, '');
+          return workingcode;
+        }
+      }
+    })
   </script>
 @endpush
