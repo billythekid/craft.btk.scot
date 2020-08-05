@@ -128,7 +128,7 @@
       computed: {
         mysqlcode: function () {
           var workingcode = this.sqlsrvcode.replace(/\[dbo]\./gi, '');
-          workingcode = workingcode.replace(/ N'/, ' \'');
+          workingcode = workingcode.replace(/ N'/g, ' \'');
           workingcode = workingcode.replace(/int IDENTITY/gi, "int AUTO_INCREMENT");
           workingcode = workingcode.replace(/\[([a-zA-Z_0-9]*)]/gi, '$1');
           workingcode = workingcode.replace(/nvarchar\(MAX\)/gi, 'longtext');
