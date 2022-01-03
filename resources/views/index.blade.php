@@ -100,7 +100,7 @@
       },
       computed: {
         dlHref: function () {
-          return "http://download.buildwithcraft.com/craft/" +
+          return "https://download.buildwithcraft.com/craft/" +
             this.version +
             "/" +
             this.version +
